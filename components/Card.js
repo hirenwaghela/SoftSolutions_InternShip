@@ -491,6 +491,7 @@ export class ScrollVerticalCard extends React.Component{
                             itemId: obj._id,
                         });
                     }}
+                    key={obj._id}
                     style={{flexDirection:'row', elevation:3, width: width-10, height: 130, alignItems:'center', justifyContent:'space-between', marginVertical:5, marginHorizontal:5, backgroundColor:"#fff"}}>
                 <View style={{ width:150,height:120,paddingVertical:5, paddingLeft:5,paddingRight:3}}>
                 { obj.images.length >=1 ? ( 

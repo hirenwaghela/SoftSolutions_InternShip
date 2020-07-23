@@ -96,7 +96,8 @@ export default class Offers extends React.Component {
     refreshing: false,
     data: [],
     status: '',
-    filtered: '',
+    filtered_data: [],
+    button_clicked:''
   }
 
   async componentDidMount() {
@@ -118,7 +119,7 @@ export default class Offers extends React.Component {
             data: [...this.state.data, ...res.data],
             refreshing: false
           })
-          console.log(this.state.data);
+          // console.log(this.state.data);
         })
         .catch(error => {
           this.setState({
@@ -154,35 +155,96 @@ export default class Offers extends React.Component {
 
 
 
-  // renderStatus = (status) => {
-  //   if (status == 'Pending') {
-  //     return <Text style={{ color: 'gold' }}>Pending</Text>
-  //     // return <FontAwesome5 name="stopwatch" size={24} color="gold" />
-  //   } else if (status == 'Approved') {
-  //     return <Text style={{ color: 'green' }}>Approved</Text>
-  //     // return <FontAwesome5 name="check" size={24} color="green" />
-  //   } else if (status == 'Declined') {
-  //     return <Text style={{ color: 'red' }}>Declined</Text>
-  //     // return <Entypo name="circle-with-cross" size={24} color="red" />
-  //   }
-  // }
+  renderStatus = (status) => {
+    if (status == 'Pending') {
+      return <Text style={{ color: 'gold' }}>Pending</Text>
+      // return <FontAwesome5 name="stopwatch" size={24} color="gold" />
+    } else if (status == 'Approved') {
+      return <Text style={{ color: 'green' }}>Approved</Text>
+      // return <FontAwesome5 name="check" size={24} color="green" />
+    } else if (status == 'Declined') {
+      return <Text style={{ color: 'red' }}>Declined</Text>
+      // return <Entypo name="circle-with-cross" size={24} color="red" />
+    }
+  }
 
   showApproved = () => {
-    let approved = this.state.data.filter(e => e.Status === "Approved");
-    this.setState({ filtered: approved })
+    let approved = this.state.data.filter(e => e.status === "Approved");
+    // console.log('Approved')
+    // console.log(approved)
+    this.setState({ 
+      filtered_data: approved ,
+      button_clicked:"Approved"
+    })
+    // console.log(this.state.button_clicked)
   }
 
   showPending = () => {
-    let pending = this.state.data.filter(e => e.Status === "Pending");
-    this.setState({ filtered: pending })
+    let pending = this.state.data.filter(e => e.status === "Pending");
+    // console.log("Pending")
+    // console.log(pending)
+    this.setState({ 
+      filtered_data: pending ,
+      button_clicked:"Pending"
+    })
+    // console.log(this.state.button_clicked)
   }
 
   showDeclined = () => {
-    let declined = this.state.data.filter(e => e.Status === "Declined");
-    this.setState({ filtered: declined })
+    let declined = this.state.data.filter(e => e.status === "Declined");
+    // console.log("Declined")
+    // console.log(declined)
+    this.setState({ 
+      filtered_data: declined ,
+      button_clicked:"Declined"
+    })
+    // console.log(this.state.button_clicked)
   }
 
   render() {
+    let show_detail;
+    if(this.state.filtered_data.length > 0 && this.state.button_clicked !==''){
+      show_detail = (
+        <FlatList
+            keyExtractor={item => item.id}
+            // data={this.state.data && this.state.filtered}
+            data={this.state.filtered_data}
+            renderItem={({ item }) =>
+              <View style={styles.card}>
+                <Text style={styles.subtitle}>Bori: {item.bori}</Text>
+                <Text style={styles.subtitle}>Driver : {item.driver}</Text>
+                <Text style={styles.subtitle}>Vehicle No: {item.vehicleNo}</Text>
+                <Text style={styles.subtitle}>Weight :  {item.weight}</Text>
+                <Text style={[styles.subtitle, { position: 'absolute', left: width / 1.45, bottom: 20, fontSize: height / 40 }]}>
+                  {
+                    this.renderStatus(item.status)
+                  }
+                </Text>
+              </View>
+            }
+            //refreshing={this.state.refreshing}
+            ListFooterComponent={this.renderFooter}
+            // onRefresh={this.handleRefresh}
+            // onEndReached={this.handleLoadMore}
+            onEndReachedThreshold={0}
+          />
+      )
+    }
+    else if(this.state.filtered_data.length == 0 && this.state.button_clicked !==''){
+      show_detail = (
+        <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+          <Text style={{fontSize:18}}>You don't have any {this.state.button_clicked} inquiry</Text>
+        </View>
+      )
+    }
+    else{
+      show_detail = (
+        <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+          <Text style={{fontSize:18}}>Check the above inquiries</Text>
+        </View>
+      )
+    }
+    
     return (
       <View style={{ flex: 1, backgroundColor: "#D3D3D3" }} >
         <Header3 navigation={this.props.navigation} />
@@ -192,30 +254,7 @@ export default class Offers extends React.Component {
           <Button title='Declined' color='red' onPress={this.showDeclined} />
           <Button title='By Date' color='green' onPress={this.showApproved} />
         </View>
-        <FlatList
-          keyExtractor={item => item.id}
-          // data={this.state.data && this.state.filtered}
-          data={this.state.data}
-          renderItem={({ item }) =>
-            <View style={styles.card}>
-              <Text style={styles.subtitle}>Bori: {item.bori}</Text>
-              <Text style={styles.subtitle}>Driver : {item.driver}</Text>
-              <Text style={styles.subtitle}>Vehicle No: {item.vehicleNo}</Text>
-              <Text style={styles.subtitle}>Weight :  {item.weight}</Text>
-              {/* <Text style={[styles.subtitle, { position: 'absolute', left: width / 1.45, bottom: 20, fontSize: height / 40 }]}>
-                {
-                  this.renderStatus(item.Status)
-                }
-              </Text> */}
-            </View>
-
-          }
-          //refreshing={this.state.refreshing}
-          ListFooterComponent={this.renderFooter}
-          // onRefresh={this.handleRefresh}
-          // onEndReached={this.handleLoadMore}
-          onEndReachedThreshold={0}
-        />
+      {show_detail}
       </View >
     );
   }

@@ -75,6 +75,7 @@ updateSearch = searchtext => {
             itemId: obj._id,
         });
     }}
+    key={obj._id}
       >
         <Card style={styles.listItem}>
           <View>
@@ -92,7 +93,7 @@ updateSearch = searchtext => {
               <Text style={styles.infoText}>
                 {obj.name}
               </Text>
-              <Text style={styles.infoText}>{obj.price}</Text>
+              <Text style={styles.infoText}>Rs {obj.price}</Text>
             </View>
           </Card>
        </TouchableOpacity>
