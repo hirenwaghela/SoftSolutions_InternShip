@@ -1,6 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, ScrollView, Dimensions, Image, View,TouchableOpacity } from 'react-native';
-import Search_Header from "../components/Search_Header";
+import { StyleSheet, Text, TextInput, ScrollView, Dimensions, Image, View,TouchableOpacity } from 'react-native';
+// import Search_Header from "../components/Search_Header";
+import {Ionicons, Feather, EvilIcons, MaterialCommunityIcons} from '@expo/vector-icons';
+import Constant from 'expo-constants';
+
 import { Card,Button,Item,Label,Input } from "native-base";
 import axios from "axios";
 const { width , height} = Dimensions.get('window')
@@ -11,18 +14,48 @@ export default class Basket extends React.Component {
   super(props);
    
   this.state = {
-    products:[]
+    products:[],
+    searchtext:"",
+    search_product:[]
   };
    }
-componentWillMount(){
-  this.getProducts();
+  componentWillMount(){
+    this.getProducts();
+  }
+
+  setResult = data => {
+    console.log(data)
+    this.setState({
+        products: [...this.state.products, ...data] ,
+        search_product: [...this.state.search_product, ...data]
+    })
 }
+
+updateSearch = searchtext => {
+    this.setState({searchtext}, () => {
+        if('' == searchtext){
+            this.setState({
+                products: [...this.state.search_product] ,
+            });
+            return;
+        }
+        this.state.products = this.state.search_product
+                                .filter(function(item) {
+                                    return item.name.includes(searchtext);
+                                })
+                                .map(function({_id,name,price,images,status}) {
+                                    return {_id,name,price,images,status} ;
+                                })
+    })
+}
+
+
   getProducts = () =>{
     axios.get(`${baseUrl}api/v1/product/getall`).
     then((res)=>{
        var products = res.data.data;
          //    var _id = res.data.data.data;
-        this.setState({products})
+        this.setResult(products)
         // var check = products[0].images[0]
         // console.log(":1:\n\n :2: \n\n"+ JSON.stringify(check).substring(7).slice(0, -1) );
       }).
@@ -66,7 +99,59 @@ componentWillMount(){
       )
     return (
       <View style={{flex:1,backgroundColor:"#D3D3D3"}}>
-        <Search_Header navigation={this.props.navigation}/>
+        
+        {/* Search Header */}
+        {/* <Search_Header navigation={this.props.navigation}/> */}
+
+        <View style={{
+            paddingTop:Constant.statusBarHeight,
+            top:0,
+            left:0,
+            right:0,
+            height:95 + Constant.statusBarHeight,
+            backgroundColor:"#4CBB17",
+            
+        }}>
+          <View style={{
+              flexDirection:"row",
+              marginVertical:5,
+              marginHorizontal:20,
+              width:width-40,
+              justifyContent:"space-between",
+          }}>
+             <TouchableOpacity onPress={() => this.navigation.goBack()}>
+                <Ionicons name="ios-arrow-back" size={30} color="white" />
+            </TouchableOpacity>
+             <View>
+                 <Text style={{color:"#fff", fontSize:18}}>Search Products</Text>
+             </View>
+             <View >
+                 <MaterialCommunityIcons name="barcode-scan" size={24} color="#fff" />
+             </View>
+          </View>
+          <View style={{flexDirection:"row" ,height: 35, width:width-30, backgroundColor: "#fff", borderRadius:5, marginHorizontal:15}}>
+                <TextInput
+                    style={{
+                        height: 35,
+                        width:width-50,
+                        fontSize: 17,
+                        color: "#010101",
+                        backgroundColor: "#fff",
+                        borderRadius:5,
+                        paddingHorizontal:15}}
+                        autoCapitalize="none"
+                        placeholder="Search"
+                        onChangeText={this.updateSearch}
+                        value={this.state.searchtext}
+                    autoFocus={true}
+                ></TextInput>
+                <EvilIcons name="search" size={28} color="#A9A9A9" style={{marginTop:5, marginLeft:-13}} />
+             </View>
+        </View>
+
+        {/* End search header */}
+
+
         <ScrollView>
           <View style={{alignItems:"center",flex:1}}>
             {_productList}
