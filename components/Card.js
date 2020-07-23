@@ -46,7 +46,7 @@ export const Card3 = (props) => (
         <TouchableOpacity
             onPress={()=>props.navigation.navigate('ProductDescription') }
             activeOpacity={0.7}
-            style={{elevation:3}}
+            style={{elevation:3}} 
         >
             <Card style={styles.mycard}>
                 <View style={{ width: '100%', height: 200}} >
@@ -293,6 +293,7 @@ export class ScrollHorizontalCard extends React.Component{
         ); 
     }
 }
+
 export class ScrollHorizontalCardNew extends React.Component{
     componentWillMount(){
         this.getProducts();
@@ -456,6 +457,82 @@ export const ScrollHorizontal_Product_SuggestionView = (props) => (
         </ScrollView>
     </View>
 );
+
+
+export class ScrollVerticalCard extends React.Component{
+    componentWillMount(){
+        this.getProducts();
+    }
+    constructor(props) {
+    super(props);
+     
+    this.state = {
+        products:[],
+        _id:"",
+        imageUri:require('./../assets/swiper-1.png')
+    };
+     }
+    getProducts = () =>{
+    axios.get(`${baseUrl}api/v1/product/getall`).
+    then((res)=>{
+       var products = res.data.data;
+        this.setState({products})
+      }).
+      catch(e=>{
+          Alert.alert('Error : '+ e);
+      })
+    }
+    render(){
+        return(
+            this.state.products.filter((status)=> status.status === 'Active').map((obj)=>
+            <TouchableOpacity
+                    onPress={()=>{
+                        this.props.navigation.navigate('ProductDescription', {
+                            itemId: obj._id,
+                        });
+                    }}
+                    style={{flexDirection:'row', elevation:3, width: width-10, height: 130, alignItems:'center', justifyContent:'space-between', marginVertical:5, marginHorizontal:5, backgroundColor:"#fff"}}>
+                <View style={{ width:150,height:120,paddingVertical:5, paddingLeft:5,paddingRight:3}}>
+                { obj.images.length >=1 ? ( 
+                    <Image
+                        style={styles.image}
+                        source={{uri : `${baseUrl}${(obj.images[0]).substring(7)}`
+                        }}
+                    /> 
+                ) :  (<Image
+                        style={styles.image}
+                        source={{uri : `${baseUrl}images/uploads/dummy.jpeg`}}
+                    />  )  }
+           
+                </View> 
+                <View>
+                    <View style={{paddingHorizontal:10, alignItems:"center"}}>
+                        <Text style={{width:130, fontSize:18}}>{obj.name}</Text>
+                    </View>                      
+                    <View style={{paddingHorizontal:10}}>
+                        <Text style={{marginTop:15, fontSize:22, color:'#76BA1B'}}>Rs. {obj.price}</Text>
+                    </View>
+                    <View style={{alignItems:"center", marginTop:15}}>
+                    </View>  
+                </View>
+        </TouchableOpacity>
+            
+            )    
+        ); 
+    }
+}
+
+
+
+export const ScrollVerticalCardView = (props) => (
+    <View style={{width:"100%", paddingTop:7, paddingBottom:8, backgroundColor:"#fff", marginBottom:3}}>
+            <ScrollView>
+                <ScrollVerticalCard navigation={props.navigation}/>
+                
+            </ScrollView>
+    </View>
+);
+
   const styles = StyleSheet.create({
     image:{
         flex: 1,

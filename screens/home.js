@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, ScrollView, Dimensions, Image, View } from 'react-native';
 import { Header } from "../components/Header_components"
 import  { Swiper1, Swiper2 } from "../components/Swiper" ;
-import  { Card1, Card2, Card3, Card4, Card5, LabelCard, LargeCategoryCards, SmallCategoryCards, ScrollHorizontalCardView } from "../components/Card"
+import  { Card1, Card2, Card3, Card4, Card5, LabelCard, LargeCategoryCards, SmallCategoryCards, ScrollVerticalCardView } from "../components/Card"
 import { FlatList } from 'react-native-gesture-handler';
 import { ActivityIndicator } from 'react-native-paper';
 const { width } = Dimensions.get('window')
@@ -18,7 +18,7 @@ export default class Home extends React.Component {
       // {id:"3", component:<Swiper1 navigation={this.props.navigation}/>},
       // {id:"4", component:<Card1 navigation={this.props.navigation}/>},
       {id:"5", component:<Swiper2 navigation={this.props.navigation}/>},
-      {id:"111", component:<ScrollHorizontalCardView navigation={this.props.navigation}/>},
+      {id:"111", component:<ScrollVerticalCardView navigation={this.props.navigation}/>},
 
       // {id:"6", component:<LabelCard label="Shop By Category" navigation={this.props.navigation}/>},
 
