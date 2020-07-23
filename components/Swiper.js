@@ -50,14 +50,28 @@ export const Swiper2 = (props) => (
                     onPress={()=>props.navigation.navigate('ProductDescription') }
                     activeOpacity={1}
                     >
-                    <Image style={styles.image} source={require("../assets/swiper-3.png")} />
+                    <Image style={styles.image} source={require("../assets/image1.jpg")} />
                 </TouchableOpacity>
                 <TouchableOpacity 
                     style={{flex:1}}
                     onPress={()=>props.navigation.navigate('ProductDescription') }
                     activeOpacity={1}
                 >
-                    <Image style={styles.image} source={require("../assets/swiper-1.png")} />
+                    <Image style={styles.image} source={require("../assets/image2.jpg")} />
+                </TouchableOpacity>
+                <TouchableOpacity 
+                    style={{flex:1}}
+                    onPress={()=>props.navigation.navigate('ProductDescription') }
+                    activeOpacity={1}
+                >
+                    <Image style={styles.image} source={require("../assets/image3.jpg")} />
+                </TouchableOpacity>
+                <TouchableOpacity 
+                    style={{flex:1}}
+                    onPress={()=>props.navigation.navigate('ProductDescription') }
+                    activeOpacity={1}
+                >
+                    <Image style={styles.image} source={require("../assets/image4.jpg")} />
                 </TouchableOpacity>
                 <TouchableOpacity 
                     style={{flex:1}}
@@ -71,28 +85,14 @@ export const Swiper2 = (props) => (
                     onPress={()=>props.navigation.navigate('ProductDescription') }
                     activeOpacity={1}
                 >
-                    <Image style={styles.image} source={require("../assets/SWIPER-4.png")} />
+                    <Image style={styles.image} source={require("../assets/image5.jpg")} />
                 </TouchableOpacity>
                 <TouchableOpacity 
                     style={{flex:1}}
                     onPress={()=>props.navigation.navigate('ProductDescription') }
                     activeOpacity={1}
                 >
-                    <Image style={styles.image} source={require("../assets/swiper-5.png")} />
-                </TouchableOpacity>
-                <TouchableOpacity 
-                    style={{flex:1}}
-                    onPress={()=>props.navigation.navigate('ProductDescription') }
-                    activeOpacity={1}
-                >
-                    <Image style={styles.image} source={require("../assets/swiper-1.png")} />
-                </TouchableOpacity>
-                <TouchableOpacity 
-                    style={{flex:1}}
-                    onPress={()=>props.navigation.navigate('ProductDescription') }
-                    activeOpacity={1}
-                >
-                    <Image style={styles.image} source={require("../assets/swiper-1.png")} />
+                    <Image style={styles.image} source={require("../assets/image3.jpg")} />
                 </TouchableOpacity>
                 {/* <TouchableOpacity 
                     style={{flex:1}}

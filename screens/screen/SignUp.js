@@ -18,7 +18,7 @@ export default class signUp extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-          selected: "Adatiya",
+          selected: "Farmer",
           imageProfile: null,
           imageAadhar: null,
           imagePan: null,
@@ -376,14 +376,14 @@ export default class signUp extends React.Component{
       }
       checUser=()=>{
         if(
-          this.state.fullName !== "" &&
+          // this.state.fullName !== "" &&
           this.state.username !== "" &&
           this.state.password !== "" &&
-          this.state.mNumber !== "" &&
-          this.state.addressLine1 !== "" &&
-          this.state.addressLine2 !== "" &&
-          this.state.uCity !== "" &&
-          this.state.uState
+          this.state.mNumber !== ""  //&&
+          // this.state.addressLine1 !== "" &&
+          // this.state.addressLine2 !== "" &&
+          // this.state.uCity !== "" &&
+          // this.state.uState
         ){
           return false
         }
@@ -413,9 +413,9 @@ export default class signUp extends React.Component{
               selectedValue={this.state.selected}
               onValueChange={this.onValueChange.bind(this)}
             >
-              <Picker.Item label="Adatiya" value="Adatiya" />
-              <Picker.Item label="Brochoure" value="Brochoure" />
               <Picker.Item label="Farmer" value="Farmer" />
+              <Picker.Item label="Adatiya" value="Adatiya" />
+              <Picker.Item label="Broker" value="Broker" />
             </Picker>
           </View>
            </View>
