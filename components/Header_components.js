@@ -37,7 +37,7 @@ export class Header extends React.Component{
         let msg = null
         if (this.state.username !==null) {
             Id = this.state.username
-            msg = "Welcome : "
+            msg = "स्वागत हे : "
         }
         else{
             msg = ""
@@ -87,7 +87,7 @@ export class Header extends React.Component{
                             justifyContent:'center'
                         }}
                     >
-                        <Text style={{fontSize:17, color:'grey'}}>Search</Text>
+                        <Text style={{fontSize:17, color:'grey'}}>खोज</Text>
                     </TouchableOpacity>
                     <EvilIcons name="search" size={28} color="#A9A9A9" style={{marginTop:5, marginLeft:-13}} />
                  </View>
@@ -137,7 +137,7 @@ export const Header2 = (props) => {
                         justifyContent:'center'
                     }}
                 >
-                    <Text style={{fontSize:17, color:'grey'}}>Search</Text>
+                    <Text style={{fontSize:17, color:'grey'}}>खोज</Text>
                 </TouchableOpacity>
                 <EvilIcons name="search" size={28} color="#A9A9A9" style={{marginTop:5, marginLeft:-13}} />
              </View>
@@ -170,7 +170,7 @@ export const Header3 = (props) => {
                 <Feather name="menu" size={30} color="white" />
             </TouchableOpacity>
              <View>
-                 <Text style={{color:"#fff", fontSize:20}}>Inquiries</Text>
+                 <Text style={{color:"#fff", fontSize:20}}>पूछताछ</Text>
              </View>
              <TouchableOpacity onPress={() => props.navigation.navigate('Search')} activeOpacity={0.8}>
                  <EvilIcons name="search" size={32} color="#fff" style={{marginTop:5, marginRight:8}} />
@@ -201,7 +201,7 @@ export const Header4 = (props) => {
                 <Feather name="menu" size={30} color="white" />
             </TouchableOpacity>
              <View>
-                 <Text style={{color:"#fff", fontSize:20, paddingLeft:10}}>Review Basket</Text>
+                 <Text style={{color:"#fff", fontSize:20, paddingLeft:10}}>टोकरी की समीक्षा करें</Text>
              </View>
             <TouchableOpacity onPress={() => props.navigation.navigate('Search')} >
                 <EvilIcons name="search" size={32} color="#fff" style={{marginTop:5, marginRight:8}} />

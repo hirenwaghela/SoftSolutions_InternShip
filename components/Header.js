@@ -33,8 +33,8 @@ export default class Header extends React.Component {
           }}>
              <Feather name="menu" size={30} color="white" />
              <View>
-                 <Text style={{color:"#fff"}}>Your Location</Text>
-                 <Text style={{color:"#fff"}}>5600004, Bangalore</Text>
+                 <Text style={{color:"#fff"}}>आपकी स्थिति</Text>
+                 <Text style={{color:"#fff"}}>5600004, बैंगलोर</Text>
              </View>
              <FontAwesome5 name="user-circle" size={30} color="white" />
           </View>
@@ -48,7 +48,7 @@ export default class Header extends React.Component {
                         backgroundColor: "#fff",
                         paddingHorizontal:15}}
                         autoCapitalize="none"
-                        placeholder="Search"
+                        placeholder="खोज"
                         onChangeText={searchtext => this.setState({ searchtext })}
                         value={this.state.searchtext}
                 ></TextInput>

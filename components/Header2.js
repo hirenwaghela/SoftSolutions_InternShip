@@ -32,7 +32,7 @@ export default class Header2 extends React.Component {
           }}>
              <Feather name="menu" size={30} color="white" />
              <View>
-                 <Text style={{color:"#fff", fontSize:20}}>Shop By Category</Text>
+                 <Text style={{color:"#fff", fontSize:20}}>वर्गों के अनुसार खरीदारी</Text>
              </View>
              <View></View>
           </View>
@@ -46,7 +46,7 @@ export default class Header2 extends React.Component {
                         backgroundColor: "#fff",
                         paddingHorizontal:15}}
                         autoCapitalize="none"
-                        placeholder="Search"
+                        placeholder="खोज"
                         onChangeText={searchtext => this.setState({ searchtext })}
                         value={this.state.searchtext}
                 ></TextInput>

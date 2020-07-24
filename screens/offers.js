@@ -157,13 +157,13 @@ export default class Offers extends React.Component {
 
   renderStatus = (status) => {
     if (status == 'Pending') {
-      return <Text style={{ color: 'gold' }}>Pending</Text>
+      return <Text style={{ color: 'gold' }}>विचाराधीन</Text>
       // return <FontAwesome5 name="stopwatch" size={24} color="gold" />
     } else if (status == 'Approved') {
-      return <Text style={{ color: 'green' }}>Approved</Text>
+      return <Text style={{ color: 'green' }}>मंजूर की</Text>
       // return <FontAwesome5 name="check" size={24} color="green" />
     } else if (status == 'Declined') {
-      return <Text style={{ color: 'red' }}>Declined</Text>
+      return <Text style={{ color: 'red' }}>इंकार कर दिया</Text>
       // return <Entypo name="circle-with-cross" size={24} color="red" />
     }
   }
@@ -211,10 +211,10 @@ export default class Offers extends React.Component {
             data={this.state.filtered_data}
             renderItem={({ item }) =>
               <View style={styles.card}>
-                <Text style={styles.subtitle}>Bori: {item.bori}</Text>
-                <Text style={styles.subtitle}>Driver : {item.driver}</Text>
-                <Text style={styles.subtitle}>Vehicle No: {item.vehicleNo}</Text>
-                <Text style={styles.subtitle}>Weight :  {item.weight}</Text>
+                <Text style={styles.subtitle}>बोरी: {item.bori}</Text>
+                <Text style={styles.subtitle}>चालक : {item.driver}</Text>
+                <Text style={styles.subtitle}>गाडी नंबर: {item.vehicleNo}</Text>
+                <Text style={styles.subtitle}>वजन :  {item.weight}</Text>
                 <Text style={[styles.subtitle, { position: 'absolute', left: width / 1.45, bottom: 20, fontSize: height / 40 }]}>
                   {
                     this.renderStatus(item.status)
@@ -230,17 +230,37 @@ export default class Offers extends React.Component {
           />
       )
     }
-    else if(this.state.filtered_data.length == 0 && this.state.button_clicked !==''){
+    else if(this.state.filtered_data.length == 0 
+            && this.state.button_clicked !==''
+            && this.state.button_clicked=="Approved"){
       show_detail = (
         <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-          <Text style={{fontSize:18}}>You don't have any {this.state.button_clicked} inquiry</Text>
+          <Text style={{fontSize:18}}>आपके पास कोई अनुमोदित जांच नहीं है</Text>
         </View>
       )
     }
+    else if(this.state.filtered_data.length == 0 
+            && this.state.button_clicked !==''
+            && this.state.button_clicked=="Pending"){
+      show_detail = (
+        <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+          <Text style={{fontSize:18}}>आपके पास कोई जांच लंबित नहीं है</Text>
+        </View>
+      )
+    }
+    else if(this.state.filtered_data.length == 0 
+            && this.state.button_clicked !==''
+            && this.state.button_clicked=="Declined"){
+      show_detail = (
+      <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
+      <Text style={{fontSize:18}}>आपके पास कोई अस्वीकृत जांच नहीं है</Text>
+      </View>
+      )
+      }
     else{
       show_detail = (
         <View style={{flex:1, justifyContent:'center', alignItems:'center'}}>
-          <Text style={{fontSize:18}}>Check the above inquiries</Text>
+          <Text style={{fontSize:18}}>उपरोक्त पूछताछ की जाँच करें</Text>
         </View>
       )
     }
@@ -249,10 +269,10 @@ export default class Offers extends React.Component {
       <View style={{ flex: 1, backgroundColor: "#D3D3D3" }} >
         <Header3 navigation={this.props.navigation} />
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
-          <Button title="Approved" color='green' onPress={this.showApproved} />
-          <Button title='Pending' color='gold' onPress={this.showPending} />
-          <Button title='Declined' color='red' onPress={this.showDeclined} />
-          <Button title='By Date' color='green' onPress={this.showApproved} />
+          <Button title="मंजूर की" color='green' onPress={this.showApproved} />
+          <Button title='विचाराधीन' color='gold' onPress={this.showPending} />
+          <Button title='इंकार कर दिया' color='red' onPress={this.showDeclined} />
+          <Button title='तिथि के अनुसार' color='green' onPress={this.showApproved} />
         </View>
       {show_detail}
       </View >

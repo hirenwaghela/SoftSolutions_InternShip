@@ -55,7 +55,7 @@ export default class Search_Header extends React.Component {
                 <Ionicons name="ios-arrow-back" size={30} color="white" />
             </TouchableOpacity>
              <View>
-                 <Text style={{color:"#fff", fontSize:18}}>Search Products</Text>
+                 <Text style={{color:"#fff", fontSize:18}}>उत्पादों को खोजना</Text>
              </View>
              <View >
                  <MaterialCommunityIcons name="barcode-scan" size={24} color="#fff" />
@@ -72,7 +72,7 @@ export default class Search_Header extends React.Component {
                         borderRadius:5,
                         paddingHorizontal:15}}
                         autoCapitalize="none"
-                        placeholder="Search"
+                        placeholder="खोज"
                         onChangeText={searchtext => this.setState({ searchtext })}
                         value={this.state.searchtext}
                     autoFocus={true}

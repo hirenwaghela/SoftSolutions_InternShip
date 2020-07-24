@@ -16,7 +16,7 @@ export default class Login extends React.Component{
           username: "",
           password: "",
           responce: null,
-          loginText :   <Text style={{textAlign:"center",color:"#fff"}}>Login</Text>,
+          loginText :   <Text style={{textAlign:"center",color:"#fff"}}>लॉग इन</Text>,
           disableBttn: false,
           loginPressed:false
         };
@@ -43,7 +43,7 @@ export default class Login extends React.Component{
           then(async()=>{
             AsyncStorage.setItem('username',this.state.username)
             .then(async()=>{
-              Alert.alert("You've been Successfully logged in!")
+              Alert.alert("आप सफलतापूर्वक लॉग इन हो गए हैं!")
               this.setState({
                 username:null,
                 password:null,
@@ -51,7 +51,7 @@ export default class Login extends React.Component{
               })
               this.props.nav.navigate("Home")
               this.setState({
-                loginText:<Text style={{textAlign:"center",color:"#fff"}}>Login</Text>,
+                loginText:<Text style={{textAlign:"center",color:"#fff"}}>लॉग इन</Text>,
                 disableBttn:false
               })
               // this.props.navigation.goBack();
@@ -67,9 +67,9 @@ export default class Login extends React.Component{
           })
         }).catch(e=>{
           console.log('error from backend: '+e);
-          Alert.alert("Credentials not valid!")
+          Alert.alert("प्रमाणिकता मान्य नहीं!")
           this.setState({
-            loginText:<Text style={{textAlign:"center",color:"#fff"}}>Login</Text>,
+            loginText:<Text style={{textAlign:"center",color:"#fff"}}>लॉग इन</Text>,
             disableBttn:false
           })
         })
@@ -81,7 +81,7 @@ export default class Login extends React.Component{
                 {/* <Text style={{fontSize:20,marginTop:35,textAlign:"center"}}>Hey,User</Text> */}
                 <Form style={{marginTop:100}}> 
              <Item floatingLabel>
-                <Label>User Name</Label>
+                <Label>उपयोगकर्ता नाम</Label>
                  <Input 
                 value={this.state.username}
                 onChangeText={
@@ -90,7 +90,7 @@ export default class Login extends React.Component{
                />
             </Item>
             <Item floatingLabel>
-              <Label>Password</Label>
+              <Label>कुंजिका</Label>
                 <Input 
                 secureTextEntry={true}
                 value={this.state.password}

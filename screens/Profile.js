@@ -143,7 +143,7 @@ _checklogin = async () =>{
               onPress={()=>{
                 AsyncStorage.removeItem('username').then(()=>this.props.navigation.replace("Home"))
               }}
-              ><Text> &nbsp;Logout</Text></TouchableOpacity>
+              ><Text> &nbsp;लॉग आउट</Text></TouchableOpacity>
             </ListItem> 
           </List>
         </Content>

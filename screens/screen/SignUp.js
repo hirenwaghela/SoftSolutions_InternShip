@@ -29,6 +29,7 @@ export default class signUp extends React.Component{
           land:"",
           area:"sq",
           comodity:null,
+          bank_name:'',
           accNumber:"",
           ifscCode:"",
           accHolderName:"",
@@ -65,7 +66,7 @@ export default class signUp extends React.Component{
         if (Constants.platform.ios) {
           const { status } = await Permissions.askAsync(Permissions.CAMERA_ROLL);
           if (status !== 'granted') {
-            alert('Sorry, we need camera roll permissions to make this work!');
+            alert('क्षमा करें, हमें यह काम करने के लिए कैमरा रोल की अनुमति चाहिए!');
           }
         }
       };    
@@ -268,7 +269,7 @@ export default class signUp extends React.Component{
           });
         }
       }; 
-      submitData=(fullName,username,password,mNumber,land,area,comodity,accNumber,ifscCode,accHolderName,aadharNumber,pan,selected,image)=>{
+      submitData=(fullName,username,password,mNumber,land,area,comodity,bank_name,accNumber,ifscCode,accHolderName,aadharNumber,pan,selected,image)=>{
         axios.post(`${baseUrl}api/v1/authentication/register/`,{
           "userType": selected,
           "userName": username,
@@ -282,6 +283,7 @@ export default class signUp extends React.Component{
           "landAreaType": area,
           "commodity": comodity,
           "bankDetails": {
+              'bank_name':bank_name,
               "accHolderName":accHolderName,
               "ifscCode":ifscCode,
               "accNumber":accNumber
@@ -296,7 +298,7 @@ export default class signUp extends React.Component{
           "admin": false
         })
         .then(()=>{
-          Alert,alert("User Registered Sucessfully")
+          Alert,alert("उपयोगकर्ता पंजीकृत सुस्पष्ट रूप से")
           this.setState({
             selected: "Farmer",
             imageProfile: null,
@@ -309,6 +311,7 @@ export default class signUp extends React.Component{
             land:"",
             area:"sq",
             comodity:null,
+            bank_name:'',
             accNumber:"",
             ifscCode:"",
             accHolderName:"",
@@ -330,7 +333,7 @@ export default class signUp extends React.Component{
         })
         .catch((e)=>{
             console.log(e.message);
-            Alert.alert("Duplicate registration is not allowed")
+            Alert.alert("डुप्लिकेट पंजीकरण की अनुमति नहीं है")
         })
       }
       addTextInput = (index) => {
@@ -338,7 +341,7 @@ export default class signUp extends React.Component{
 
         textInput.push(
           <Item  floatingLabel>
-          <Label>Commodity</Label>
+          <Label>वस्तु</Label>
           <Input 
            onChangeText={(text) => this.addValues(text, index)}   
           />
@@ -426,25 +429,25 @@ export default class signUp extends React.Component{
     <ProgressSteps >
         <ProgressStep 
         nextBtnDisabled={this.checUser()}
-        label="User">
+        label="उपयोगकर्ता">
             <View style={{ backgroundColor:"#fff" }}>
             {/* <Form> */}
            <View style={{flexDirection:"row",justifyContent:"center"}}>
           <View>
-           <Text style={{fontSize:18}}>User Type : </Text>
+           <Text style={{fontSize:18}}>उपयोगकर्ता का प्रकार : </Text>
           </View>
           <View style={{marginTop:-25}}>
           <Picker
               mode="dropdown"
-              iosHeader="Select User Type"
+              iosHeader="उपयोगकर्ता प्रकार का चयन करें"
               iosIcon={<Icon name="arrow-down" />}
               style={{ width:200,marginLeft:5,marginBottom:-30 }}
               selectedValue={this.state.selected}
               onValueChange={this.onValueChange.bind(this)}
             >
-              <Picker.Item label="Farmer" value="Farmer" />
+              <Picker.Item label="किसान" value="Farmer" />
               <Picker.Item label="Adatiya" value="Adatiya" />
-              <Picker.Item label="Broker" value="Broker" />
+              <Picker.Item label="दलाल" value="Broker" />
             </Picker>
           </View>
            </View>
@@ -469,7 +472,7 @@ export default class signUp extends React.Component{
             <Item 
             style={{marginTop:10}}
              floatingLabel>
-            <Label>User Name</Label>
+            <Label>उपयोगकर्ता नाम</Label>
             <Input 
                 value={this.state.username}
                 autoCorrect={false}
@@ -483,7 +486,7 @@ export default class signUp extends React.Component{
             <Item 
             style={{marginTop:15}}
              floatingLabel>
-            <Label>Password</Label>
+            <Label>कुंजिका</Label>
             <Input 
                 value={this.state.password}
                 secureTextEntry={true}
@@ -498,7 +501,7 @@ export default class signUp extends React.Component{
             <Item 
             style={{marginTop:15}}
              floatingLabel>
-            <Label>Mobile Number</Label>
+            <Label>मोबाइल नंबर</Label>
             <Input 
                 value={this.state.mNumber}
                 autoCorrect={false}
@@ -512,7 +515,7 @@ export default class signUp extends React.Component{
             <Item 
             style={{marginTop:15}}
              floatingLabel>
-            <Label>Address 1</Label>
+            <Label>पता 1</Label>
             <Input 
                 value={this.state.addressLine1}
                 autoCorrect={false}
@@ -526,7 +529,7 @@ export default class signUp extends React.Component{
             <Item 
             style={{marginTop:15}}
              floatingLabel>
-            <Label>Address 2</Label>
+            <Label>पता 2</Label>
             <Input 
                 value={this.state.addressLine2}
                 autoCorrect={false}
@@ -540,7 +543,7 @@ export default class signUp extends React.Component{
             <Item 
             style={{marginTop:15}}
              floatingLabel>
-            <Label>City</Label>
+            <Label>शहर</Label>
             <Input 
                 value={this.state.uCity}
                 autoCorrect={false}
@@ -554,7 +557,7 @@ export default class signUp extends React.Component{
             <Item 
             style={{marginTop:15}}
              floatingLabel>
-            <Label>State</Label>
+            <Label>राज्य</Label>
             <Input 
                 value={this.state.uState}
                 autoCorrect={false}
@@ -572,7 +575,7 @@ export default class signUp extends React.Component{
         </ProgressStep>
         <ProgressStep 
         onNext = {this.getValues}
-        label="Land">
+        label="भूमि">
         <View style={{ backgroundColor:"#fff" }}>
             {/* <Form> */}
             <View style={{flexDirection:"row",flex:3}}>
@@ -582,7 +585,7 @@ export default class signUp extends React.Component{
             style={{width:100,marginLeft:15}}
             >
 
-            <Label>Land</Label>
+            <Label>भूमि</Label>
             <Input 
 
                 value={this.state.land}
@@ -603,8 +606,8 @@ export default class signUp extends React.Component{
               selectedValue={this.state.area}
               onValueChange={this.onValueChange.bind(this)}
             >
-              <Picker.Item label="sq" value="sq" />
-              <Picker.Item label="acre" value="acre" />
+              <Picker.Item label="वर्ग" value="sq" />
+              <Picker.Item label="एकड़" value="acre" />
             </Picker>
             </View>
             {/* <View style={{flex:1}}></View> */}
@@ -617,13 +620,13 @@ export default class signUp extends React.Component{
             <View style={{ margin: 10 }}>
               <Button style={{width:200,justifyContent:"center"}} onPress={() => this.addTextInput(this.state.textInput.length)}>
               <Text style={{color:"#fff"}}>
-                Add Commodity
+              कमोडिटी जोड़ें
               </Text>
               </Button>
             </View>
             <View style={{ margin: 10}}>
               <Button style={{width:200,justifyContent:"center"}} onPress={() => this.removeTextInput()} >
-                <Text style={{color:"#fff"}}>Remove Commodity</Text>
+                <Text style={{color:"#fff"}}>कमोडिटी निकालें</Text>
               </Button>
             </View>
           </View>
@@ -650,11 +653,20 @@ export default class signUp extends React.Component{
         <ProgressStep 
         nextBtnDisabled={this.checkBank()}
         // nextBtnDisabled={this.state.bankBttn}
-        label="Bank">
+        label="बैंक">
         <View style={{ backgroundColor:"#fff" }}>
             {/* <Form> */}
             <Item floatingLabel>
-              <Label>Account Number</Label>
+              <Label>बैंक का नाम</Label>
+              <Input 
+                value={this.state.bank_name}
+                  onChangeText={
+                    bank_name=>this.setState({bank_name})
+                  }
+              />
+            </Item>
+            <Item floatingLabel>
+              <Label>खाता संख्या</Label>
               <Input 
                 value={this.state.accNumber}
                   onChangeText={
@@ -663,7 +675,7 @@ export default class signUp extends React.Component{
               />
             </Item>
             <Item floatingLabel>
-              <Label>IFSC Code</Label>
+              <Label>IFSC कोड</Label>
               <Input 
                 value={this.state.ifscCode}
                   onChangeText={
@@ -672,7 +684,7 @@ export default class signUp extends React.Component{
               />
             </Item>
             <Item floatingLabel>
-              <Label>Account Holder Name</Label>
+              <Label>खाताधारक का नाम</Label>
               <Input 
                 value={this.state.accHolderName}
                   onChangeText={
@@ -683,11 +695,11 @@ export default class signUp extends React.Component{
           {/* </Form> */}
             </View>
         </ProgressStep>
-        <ProgressStep label="Personal ">
+        <ProgressStep label="निजी ">
         <View style={{ backgroundColor:"#fff" }}>
             <Form>
             <Item floatingLabel>
-              <Label>Aadhar Number</Label>
+              <Label>आधार संख्या</Label>
               <Input 
                   onChangeText={
                       aadharNumber=>this.setState({aadharNumber})
@@ -695,7 +707,7 @@ export default class signUp extends React.Component{
               />
             </Item>
             <Item floatingLabel>
-              <Label>PAN</Label>
+              <Label>पैन</Label>
               <Input 
                   onChangeText={
                       pan=>this.setState({pan})
@@ -705,7 +717,7 @@ export default class signUp extends React.Component{
           </Form>
             </View>
         </ProgressStep>
-        <ProgressStep label="Upload "
+        <ProgressStep label="डालना "
         onSubmit={()=>this.submitData(
             this.state.fullName,
             this.state.username,
@@ -728,7 +740,7 @@ export default class signUp extends React.Component{
             <TouchableOpacity onPress={this.userChoice} style={{flexDirection:"row"}}>
             <MaterialCommunityIcons name="face-profile" size={26} color="black" />
                 <Text>
-                &nbsp;&nbsp;:Upload your photo
+                &nbsp;&nbsp;:अपनी फोटो अपलोड करें
                 </Text>
                 <Text>
                 &nbsp;&nbsp;<Entypo name={this.state.check1} size={18} color="green"/>
@@ -737,7 +749,7 @@ export default class signUp extends React.Component{
             <TouchableOpacity onPress={this._pickImageAadhar} style={{flexDirection:"row",marginTop:20}}>
             <AntDesign name="idcard" size={26} color="black" />
                 <Text>
-                &nbsp;&nbsp;:Upload your Aadhar
+                &nbsp;&nbsp;:अपना आधार अपलोड करें
                 </Text>
                 <Text>
                 &nbsp;&nbsp;<Entypo name={this.state.check2} size={18} color="green"/>
@@ -746,7 +758,7 @@ export default class signUp extends React.Component{
             <TouchableOpacity onPress={this._pickImagePan} style={{flexDirection:"row",marginTop:20}}>
             <AntDesign name="idcard" size={26} color="black" />
                 <Text>
-                &nbsp;&nbsp;:Upload your PAN
+                &nbsp;&nbsp;:अपना पैन अपलोड करें
                 </Text>
                 <Text>
                 &nbsp;&nbsp;<Entypo name={this.state.check3} size={18} color="green"/>
@@ -756,13 +768,13 @@ export default class signUp extends React.Component{
                 show={this.state.showAlert}
                 showProgress={false}
                 // title=""
-                message="How will you upload the documents?"
+                message="आप दस्तावेज़ कैसे अपलोड करेंगे?"
                 closeOnTouchOutside={true}
                 closeOnHardwareBackPress={false}
                 showCancelButton={true}
                 showConfirmButton={true}
-                cancelText="From Camera"
-                confirmText="From Gallery"
+                cancelText="कैमरा से"
+                confirmText="गैलरी से"
                 confirmButtonColor="#DD6B55"
                 onCancelPressed={() => {
                   this._pickImageProfileCamera()

@@ -6,7 +6,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import { EvilIcons, FontAwesome5, FontAwesome, Feather, Fontisto, AntDesign } from '@expo/vector-icons';
+import { EvilIcons, Entypo, Foundation, FontAwesome, Feather, Fontisto, AntDesign } from '@expo/vector-icons';
 import Home from "./screens/home";
 import Category from './screens/category';
 import Search from './screens/search';
@@ -47,12 +47,12 @@ class LoginCheck extends React.Component{
     <TouchableOpacity onPress={ () => this.props.nav.navigate('LoginSignup') } 
                       activeOpacity={0.8} 
                       style={{alignItems:'center', justifyContent:'center', height:30, width:100, borderWidth:1, borderColor:'#fff'}}>
-      <Text style={{fontSize:14, color:'#fff'}}>Login</Text>
+      <Text style={{fontSize:14, color:'#fff'}}>लॉग इन</Text>
     </TouchableOpacity>
     <TouchableOpacity onPress={ () => this.props.nav.navigate('LoginSignup') } 
                       activeOpacity={0.8} 
                       style={{alignItems:'center', justifyContent:'center', height:30, width:100, borderWidth:1, borderColor:'#fff'}}>
-      <Text style={{fontSize:14, color:'#fff'}}>Signup</Text>
+      <Text style={{fontSize:14, color:'#fff'}}>साइन अप</Text>
     </TouchableOpacity>
     </View>
         let AfterLogin = <View style={{flexDirection:'row', alignItems:'center', justifyContent:'space-around', height:18 + Constant.statusBarHeight, backgroundColor:'#010101'}}>
@@ -60,14 +60,14 @@ class LoginCheck extends React.Component{
           AsyncStorage.removeItem('username')
           .then(()=>{
             this._checkLocalStorage();
-            Alert.alert("Logged out Sucessfully")
+            Alert.alert("लॉग आउट किया")
             })
           .catch(e=>console.log('logout error : '+e)
           )
         } } 
         activeOpacity={0.8} 
         style={{alignItems:'center', justifyContent:'center', height:30, width:100, borderWidth:1, borderColor:'#fff'}}>
-          <Text style={{fontSize:14, color:'#fff'}}>Logout</Text>
+          <Text style={{fontSize:14, color:'#fff'}}>लॉग आउट</Text>
         </TouchableOpacity>
         </View>
       if (this.state.username !== null) {
@@ -92,7 +92,7 @@ const HomeStack = () => {
       {/* <Stack.Screen name="Basket" component={Basket} options={{ headerShown: false }} /> */}
       <Stack.Screen name="Search" component={Search} options={{ headerShown: false }} />
       <Stack.Screen name="Profile" component={Profile} options={{ 
-        headerTitle:"My profile",
+        headerTitle:"मेरी प्रोफाइल",
         headerStyle:{
           backgroundColor:"#76BA1B",
         },
@@ -100,9 +100,9 @@ const HomeStack = () => {
         headerTintColor:"#fff"
        }} />
         <Stack.Screen name="UpdateProfile" component={UpdateProfile} options={{ 
-        headerTitle:"Update Profile",
+        headerTitle:"प्रोफ़ाइल अपडेट करें",
         headerStyle:{
-          backgroundColor:"#689f39",
+          backgroundColor:"#76BA1B",
         },
         headerTitleAlign:"center",
         headerTintColor:"#fff"
@@ -120,10 +120,10 @@ const tabBarStyle = {
 const HomeTab = () => {
   return (
         <Tab.Navigator tabBarOptions={tabBarStyle}>
-          <Tab.Screen name="Home" component={HomeStack} 
+          <Tab.Screen name="घर" component={HomeStack} 
                     options={{
                       tabBarIcon: () => (
-                        <FontAwesome5 name="running" size={24} color="black" />
+                        <Entypo name="home" size={24} color="black" />
                       ),
                     }}
           />
@@ -134,17 +134,17 @@ const HomeTab = () => {
                       ),
                     }}
           /> */}
-          <Tab.Screen name="Search" component={Search} 
+          <Tab.Screen name="खोज" component={Search} 
                     options={{
                       tabBarIcon: () => (
                         <AntDesign name="search1" size={24} color="black" />
                       ),
                     }}
           />
-          <Tab.Screen name="Inquiry" component={Offers} 
+          <Tab.Screen name="जांच" component={Offers} 
                     options={{
                       tabBarIcon: () => (
-                        <FontAwesome5 name="comment-dollar" size={24} color="black" />
+                        <Foundation name="info" size={28} color="black" />
                       ),
                       
                     }}
@@ -196,7 +196,7 @@ const CustomDrawer = (props) => {
       </View> */}
       <ScrollView style={{marginTop:5, paddingVertical:10, paddingHorizontal:20, backgroundColor:'#fff'}}>
         <TouchableOpacity onPress={() => props.navigation.navigate('Home')}>
-          <Text style={{fontSize:18, marginBottom:20}}>Home</Text>
+          <Text style={{fontSize:18, marginBottom:20}}>घर</Text>
         </TouchableOpacity>
         {/* <TouchableOpacity onPress={() => props.navigation.navigate('Offers')}>
           <Text style={{fontSize:18, marginBottom:20}}>Offers</Text>

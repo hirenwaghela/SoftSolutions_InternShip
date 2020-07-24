@@ -54,14 +54,14 @@ componentWillMount(){
                   this._onPress("login")
                 //   this.loginData();
                   }} style={{flex:1,backgroundColor:textBG, justifyContent:"center", alignItems:"center"}}>
-                    <Text style={{fontSize:textSize, color: textcolor}}>Login</Text>
+                    <Text style={{fontSize:textSize, color: textcolor}}>लॉग इन</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={ () => 
               {
                   this._onPress("signup")
                 //   this.signUpData();
               }} style={{flex:1, backgroundColor:textBG2, justifyContent:"center", alignItems:"center"}}>
-                    <Text style={{fontSize:textSize2, color: textcolor2}}>Signup</Text>
+                    <Text style={{fontSize:textSize2, color: textcolor2}}>साइन अप</Text>
               </TouchableOpacity>
           </View>
           <View style={{height:height-250, width:width-20, elevation:5, backgroundColor:"#fff"}}>

@@ -14,51 +14,56 @@ export default class UpdateProfile extends Component {
             //   selectedValue={this.state.selected}
             //   onValueChange={this.onValueChange.bind(this)}
             >
+              <Picker.Item label="किसान" value="Farmer" />
               <Picker.Item label="Adatiya" value="Adatiya" />
-              <Picker.Item label="Brochoure" value="Brochoure" />
-              <Picker.Item label="Farmer" value="Farmer" />
+              <Picker.Item label="दलाल" value="Broker" />
+              
             </Picker>
           <Form style={{flexDirection:"row",flex:1}}>
             <Item floatingLabel style={{width:150}}>
-              <Label>Enter First Name</Label>
+              <Label>पहला नाम दर्ज करें</Label>
               <Input />
             </Item>
             <Item floatingLabel style={{width:150,marginLeft:50}}>
-              <Label>Enter Last Name</Label>
+              <Label>अंतिम नाम दर्ज करो</Label>
               <Input />
             </Item>
           </Form>
           <Form style={{flex:1}}>
             <Item floatingLabel>
-              <Label>Mobile Number</Label>
+              <Label>मोबाइल नंबर</Label>
               <Input />
             </Item>
             <Item floatingLabel >
-              <Label>Address 1</Label>
+              <Label>पता 1</Label>
               <Input />
             </Item>
             <Item floatingLabel >
-              <Label>Address 2</Label>
+              <Label>पता 2</Label>
               <Input />
             </Item>
             <Item floatingLabel >
-              <Label>State</Label>
+              <Label>राज्य</Label>
               <Input />
             </Item>
             <Item floatingLabel >
-              <Label>City</Label>
+              <Label>शहर</Label>
               <Input />
             </Item>
             <Item floatingLabel >
-              <Label>Account Holder Name</Label>
+              <Label>बैंक का नाम</Label>
               <Input />
             </Item>
             <Item floatingLabel >
-              <Label>Account Number</Label>
+              <Label>खाताधारक का नाम</Label>
               <Input />
             </Item>
             <Item floatingLabel >
-              <Label>IFSC Code</Label>
+              <Label>खाता संख्या</Label>
+              <Input />
+            </Item>
+            <Item floatingLabel >
+              <Label>IFSC कोड</Label>
               <Input />
             </Item>
           </Form>
@@ -66,7 +71,7 @@ export default class UpdateProfile extends Component {
         <Footer>
           <FooterTab>
             <Button full style={{backgroundColor:"#454543"}}>
-              <Text style={{color:"#fff"}}>Update</Text>
+              <Text style={{color:"#fff"}}>अपडेट करें</Text>
             </Button>
           </FooterTab>
         </Footer>

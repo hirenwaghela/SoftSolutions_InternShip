@@ -115,7 +115,7 @@ export const LargeCategoryCards = (props) => (
                         source={require("./../assets/swiper-1.png")}
                     />  
                     <View style={{alignItems:"center"}}>
-                        <Text style={{marginTop:3}}>Category Name</Text>  
+                        <Text style={{marginTop:3}}>श्रेणी नाम</Text>  
                     </View>         
                 </View>
             </Card>
@@ -134,7 +134,7 @@ export const SmallCategoryCards = (props) => (
                         source={require("./../assets/swiper-1.png")}
                     />    
                     <View style={{alignItems:"center"}}>
-                        <Text style={{marginTop:3, fontSize:10}}>Category Name</Text>
+                        <Text style={{marginTop:3, fontSize:10}}>श्रेणी नाम</Text>
                     </View>         
                 </View>
             </Card>
@@ -281,7 +281,7 @@ export class ScrollHorizontalCard extends React.Component{
                 <Text style={{width:130, fontSize:13}}>{obj.name}</Text>
             </View>                      
                 <View style={{paddingHorizontal:10}}>
-                <Text style={{marginTop:15, fontSize:14}}>Rs. {obj.price}</Text>
+                <Text style={{marginTop:15, fontSize:14}}>₹ {obj.price}</Text>
             </View>
                <View style={{alignItems:"center", marginTop:15}}>
             </View>  
@@ -355,7 +355,7 @@ export class ScrollHorizontalCardViewNew extends React.Component{
                     <Text style={{width:130, fontSize:13}}>{obj.name}</Text>
                 </View>                      
                     <View style={{paddingHorizontal:10}}>
-                    <Text style={{marginTop:15, fontSize:14}}>Rs. {obj.price}</Text>
+                    <Text style={{marginTop:15, fontSize:14}}>₹ {obj.price}</Text>
                 </View>
                 <View style={{alignItems:"center", marginTop:15}}>
                 </View>  
@@ -381,7 +381,7 @@ export const TransparentCard = (props) => (
                 justifyContent:"center"
             }}
     >
-        <Text style={{fontSize:15, color:"#fff"}}>View More</Text>
+        <Text style={{fontSize:15, color:"#fff"}}>और देखो</Text>
           
     </TouchableOpacity>
 );
@@ -514,7 +514,7 @@ export class ScrollVerticalCard extends React.Component{
                         <Text style={{width:130, fontSize:18}}>{obj.name}</Text>
                     </View>                      
                     <View style={{paddingHorizontal:10}}>
-                        <Text style={{marginTop:15, fontSize:22, color:'#76BA1B'}}>Rs. {obj.price}</Text>
+                        <Text style={{marginTop:15, fontSize:22, color:'#76BA1B'}}>₹ {obj.price}</Text>
                     </View>
                     <View style={{alignItems:"center", marginTop:15}}>
                     </View>  
@@ -590,7 +590,7 @@ export class ScrollVerticalCard2 extends React.Component{
                         <Text style={{width:130, fontSize:18}}>{obj.name}</Text>
                     </View>                      
                     <View style={{paddingHorizontal:10}}>
-                        <Text style={{marginTop:15, fontSize:22, color:'#76BA1B'}}>Rs. {obj.price}</Text>
+                        <Text style={{marginTop:15, fontSize:22, color:'#76BA1B'}}>₹ {obj.price}</Text>
                     </View>
                     <View style={{alignItems:"center", marginTop:15}}>
                     </View>  

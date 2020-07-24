@@ -93,7 +93,7 @@ updateSearch = searchtext => {
               <Text style={styles.infoText}>
                 {obj.name}
               </Text>
-              <Text style={styles.infoText}>Rs {obj.price}</Text>
+              <Text style={styles.infoText}>₹ {obj.price}</Text>
             </View>
           </Card>
        </TouchableOpacity>
@@ -124,7 +124,7 @@ updateSearch = searchtext => {
                 <Ionicons name="ios-arrow-back" size={30} color="white" />
             </TouchableOpacity>
              <View>
-                 <Text style={{color:"#fff", fontSize:18}}>Search Products</Text>
+                 <Text style={{color:"#fff", fontSize:18}}>उत्पादों को खोजना</Text>
              </View>
              <View >
                  <MaterialCommunityIcons name="barcode-scan" size={24} color="#fff" />

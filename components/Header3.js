@@ -24,7 +24,7 @@ export const Header3 = () => {
           }}>
              <Feather name="menu" size={30} color="white" />
              <View>
-                 <Text style={{color:"#fff", fontSize:20}}>Inquiries</Text>
+                 <Text style={{color:"#fff", fontSize:20}}>पूछताछ</Text>
              </View>
              <View>
                  <EvilIcons name="search" size={32} color="#fff" style={{marginTop:5, marginLeft:-13}} />
@@ -53,7 +53,7 @@ export const Header4 = () => {
           }}>
              <Feather name="menu" size={30} color="white" />
              <View>
-                 <Text style={{color:"#fff", fontSize:20}}>Review Basket</Text>
+                 <Text style={{color:"#fff", fontSize:20}}>टोकरी की समीक्षा करें</Text>
              </View>
              {/* <View style={{ flexDirection:"row", justifyContent:"space-around"}}> */}
                 <View style={{marginLeft:5}}>

@@ -107,7 +107,7 @@ export default class Product_Description extends React.Component {
         }).
             then((data) => {
                 // console.log("sucess : "+ data)
-                Alert.alert("Success", "Inquiry sent! We will get back to you shortly.")
+                Alert.alert("सफलता", "जांच भेजी गई! हम आप तक वापस आ रहे हैं जल्द ही।")
                 this.props.navigation.goBack();
             }).
             catch((e) => {
@@ -176,7 +176,7 @@ export default class Product_Description extends React.Component {
                             </View>
                             <Text style={{ fontSize: 22, marginTop: 5 }}>{this.state._productDisc}</Text>
                             <View style={{ flexDirection: 'row', width: 180, marginTop: 3, justifyContent: "space-between" }}>
-                                <Text style={{ fontSize: 15, fontWeight: "bold" }}>Rs. {this.state._productPrice}</Text>
+                                <Text style={{ fontSize: 15, fontWeight: "bold" }}>₹ {this.state._productPrice}</Text>
                                 {/* <View style={{flexDirection:'row', marginTop:3}}>
                                 <Text style={{fontSize:13, color:'grey'}}>MRP:  </Text>
                                 <Text style={{fontSize:13, color:'grey', textDecorationLine:"line-through", textDecorationColor:"grey"}}>{this.state._productPrice}</Text>
@@ -281,7 +281,7 @@ export default class Product_Description extends React.Component {
                     </View>
                 </View> */}
                     <View style={{ marginTop: 5, padding: 10, backgroundColor: '#fff' }}>
-                        <Text style={{ fontSize: 20 }}>About this product</Text>
+                        <Text style={{ fontSize: 20 }}>इस उत्पाद के बारे में</Text>
                     </View>
                     <View style={{ height: 1 }}></View>
                     {/* <View style={{padding:10, backgroundColor:'#fff'}}>
@@ -314,7 +314,7 @@ export default class Product_Description extends React.Component {
                     <View style={{ height: 1 }}></View>
                     <View style={{ padding: 10, backgroundColor: '#fff' }}>
                         <View style={{ flexDirection: 'row', justifyContent: 'space-between', paddingBottom: 10 }}>
-                            <Text style={{ fontSize: 24, color: 'grey' }}>Quality Parameters</Text>
+                            <Text style={{ fontSize: 24, color: 'grey' }}>गुणवत्ता पैरामीटर</Text>
                             {/* <TouchableOpacity>
                             <Ionicons name="ios-add" size={28} color="grey" style={{paddingRight:10}}/>
                         </TouchableOpacity> */}
@@ -329,9 +329,9 @@ export default class Product_Description extends React.Component {
                                         <View
                                             style={{}}><Text style={{ fontSize: 18, fontWeight: "bold", marginTop: 10 }}>{q}</Text></View>
                                         <View style={{ flex: 1, alignSelf: 'stretch', flexDirection: 'row', paddingTop: 5 }}>
-                                            <View style={{ flex: 1, alignSelf: 'stretch', alignItems: "center" }} ><Text style={{ color: "gray" }}>Minimum</Text></View>
-                                            <View style={{ flex: 1, alignSelf: 'stretch', alignItems: "center" }} ><Text style={{ color: "gray" }}>Maximum</Text></View>
-                                            <View style={{ flex: 1, alignSelf: 'stretch', alignItems: "center" }} ><Text style={{ color: "gray" }}>Deduction</Text></View>
+                                            <View style={{ flex: 1, alignSelf: 'stretch', alignItems: "center" }} ><Text style={{ color: "gray" }}>कम से कम</Text></View>
+                                            <View style={{ flex: 1, alignSelf: 'stretch', alignItems: "center" }} ><Text style={{ color: "gray" }}>ज्यादा से ज्यादा</Text></View>
+                                            <View style={{ flex: 1, alignSelf: 'stretch', alignItems: "center" }} ><Text style={{ color: "gray" }}>कटौती</Text></View>
                                         </View>
 
                                         {
@@ -430,7 +430,7 @@ export default class Product_Description extends React.Component {
                                 }}
                                 style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: "center", backgroundColor: 'black' }}>
                                 <FontAwesome name="openid" size={24} color="white" />
-                                <Text style={{ fontSize: 17, color: '#fff', paddingLeft: 25 }}>Send Inquiry</Text>
+                                <Text style={{ fontSize: 17, color: '#fff', paddingLeft: 25 }}>जांच भेजें</Text>
                             </TouchableOpacity>
                         </View>
                         {/* Modal View */}
@@ -446,10 +446,10 @@ export default class Product_Description extends React.Component {
                                     <View style={{ height: height - 210, width: width - 20, elevation: 5, backgroundColor: "#fff" }}>
 
                                         <View>
-                                            <Text style={{ fontSize: 20, marginTop: 35, textAlign: "center" }}>Enter Details</Text>
+                                            <Text style={{ fontSize: 20, marginTop: 35, textAlign: "center" }}>विवरण दर्ज करें</Text>
                                             <Form style={{ alignItems: "center" }}>
                                                 <Item floatingLabel >
-                                                    <Label>Bori</Label>
+                                                    <Label>बोरी</Label>
                                                     <Input
                                                         onChangeText={
                                                             bori => this.setState({ bori })
@@ -457,7 +457,7 @@ export default class Product_Description extends React.Component {
                                                     />
                                                 </Item>
                                                 <Item floatingLabel>
-                                                    <Label>weight</Label>
+                                                    <Label>वजन</Label>
                                                     <Input
                                                         onChangeText={
                                                             weight => this.setState({ weight })
@@ -465,7 +465,7 @@ export default class Product_Description extends React.Component {
                                                     />
                                                 </Item>
                                                 <Item floatingLabel>
-                                                    <Label>vehicleNo</Label>
+                                                    <Label>गाडी नंबर</Label>
                                                     <Input
                                                         onChangeText={
                                                             vehicleNo => this.setState({ vehicleNo })
@@ -473,7 +473,7 @@ export default class Product_Description extends React.Component {
                                                     />
                                                 </Item>
                                                 <Item floatingLabel>
-                                                    <Label>driver</Label>
+                                                    <Label>चालक</Label>
                                                     <Input
                                                         onChangeText={
                                                             driver => this.setState({ driver })
@@ -481,7 +481,7 @@ export default class Product_Description extends React.Component {
                                                     />
                                                 </Item>
                                                 <Item floatingLabel>
-                                                    <Label>remarks</Label>
+                                                    <Label>टिप्पणियों</Label>
                                                     <Input
                                                         onChangeText={
                                                             remarks => this.setState({ remarks })
@@ -489,7 +489,7 @@ export default class Product_Description extends React.Component {
                                                     />
                                                 </Item>
                                                 <Item floatingLabel>
-                                                    <Label>Quality</Label>
+                                                    <Label>गुणवत्ता</Label>
                                                     <Input
                                                         onChangeText={
                                                             userQuality => this.setState({ userQuality })
@@ -522,7 +522,7 @@ export default class Product_Description extends React.Component {
                                                                 this.state.remarks ? "green" : "gray"
                                                     }}
                                                     success>
-                                                    <Text style={{ color: "#fff" }}>Send Enquiry</Text>
+                                                    <Text style={{ color: "#fff" }}>जांच भेजें</Text>
                                                 </Button>
                                             </Form>
 
@@ -541,7 +541,7 @@ export default class Product_Description extends React.Component {
                         </Modal>
                     </View>
                     <View style={{ padding: 10, marginTop: 5, backgroundColor: '#fff' }}>
-                        <Text style={{ fontSize: 16, marginBottom: 10 }}>More Products</Text>
+                        <Text style={{ fontSize: 16, marginBottom: 10 }}>और उत्पाद</Text>
                         {/* <ScrollHorizontal_Product_SuggestionView /> */}
                       <ScrollHorizontalCardView navigation={this.props.navigation}/>
 
