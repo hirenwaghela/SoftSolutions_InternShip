@@ -51,7 +51,7 @@ export default class Search_Header extends React.Component {
               width:width-40,
               justifyContent:"space-between",
           }}>
-             <TouchableOpacity onPress={() => this.navigation.goBack()}>
+            <TouchableOpacity style={{backgroundColor:'red', height:30, width:30}} onPress={() => this.navigation.goBack()} >
                 <Ionicons name="ios-arrow-back" size={30} color="white" />
             </TouchableOpacity>
              <View>

@@ -10,7 +10,7 @@ export const Swiper1 = (props) => (
                 style={{height:70}} 
                 paginationStyle={{ position: "absolute", top: undefined, bottom: 0 }}
                 
-            >
+            > 
                 <TouchableOpacity 
                     style={{flex:1}}
                     onPress={()=>props.navigation.navigate('ProductDescription') }

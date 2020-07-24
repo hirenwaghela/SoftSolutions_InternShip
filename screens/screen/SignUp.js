@@ -296,7 +296,36 @@ export default class signUp extends React.Component{
           "admin": false
         })
         .then(()=>{
-          Alert,alert("User Regestered Sucessfully")
+          Alert,alert("User Registered Sucessfully")
+          this.setState({
+            selected: "Farmer",
+            imageProfile: null,
+            imageAadhar: null,
+            imagePan: null,
+            fullName:"test",
+            username:"",
+            password:"",
+            mNumber:"",
+            land:"",
+            area:"sq",
+            comodity:null,
+            accNumber:"",
+            ifscCode:"",
+            accHolderName:"",
+            aadharNumber:"",
+            pan:"",
+            addressLine1:"",
+            addressLine2:"",
+            uState:"",
+            uCity:"",
+            check1:null,
+            check2:null,
+            check3:null,
+            textInput: [],
+            inputData: [],
+            bankBttn:false,
+            showAlert:false,
+          })
           this.props.nav.navigate("Home")
         })
         .catch((e)=>{

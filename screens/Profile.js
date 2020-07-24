@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Image,View } from 'react-native';
+import { Image, View, Dimensions } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Left, Body, Right,List,ListItem } from 'native-base';
-import { EvilIcons,Entypo,SimpleLineIcons,MaterialCommunityIcons,AntDesign } from '@expo/vector-icons';
+import { EvilIcons,Entypo,SimpleLineIcons,MaterialCommunityIcons,MaterialIcons,AntDesign } from '@expo/vector-icons';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { AsyncStorage } from 'react-native';
+const { width, height } = Dimensions.get('window')
 
 export default class CardImageExample extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ componentWillMount(){
 }
 _checklogin = async () =>{
     let test= await AsyncStorage.getItem('username')
-    console.log('test\n\n\n\n\n\n\n\n\n :'+JSON.stringify(test));
+    console.log('test\n:'+JSON.stringify(test));
     this.setState({
         username:test
     }) 
@@ -28,7 +29,7 @@ _checklogin = async () =>{
   render() {
     return (
     <Container>
-     <View>
+     {/* <View>
          <Card>
          <CardItem>
             <Body style={{alignItems:"center"}}>
@@ -38,16 +39,34 @@ _checklogin = async () =>{
             </Body>
          </CardItem>
          </Card>
-     </View>
-        <Content style={{maxHeight:200}}>
+     </View> */}
+
+      <View style={{height:290, width:width, backgroundColor:'#fff', elevation:5}}>
+        
+        <View style={{marginTop:10, marginRight:5, alignItems:'flex-end'}}>
+          <TouchableOpacity style={{ height:30, width:30, alignItems:'flex-end'}}
+                            onPress={()=>this.props.navigation.navigate("UpdateProfile")}
+          >
+            <MaterialIcons name="edit" size={24} color="#76BA1B" />
+          </TouchableOpacity>
+        </View>
+        
+        <View style={{alignItems:'center', justifyContent:'center'}}>
+          <View style={{height:200, width:200, borderRadius:100, elevation:10}}>
+            <Image style={{height:200, width:200, borderRadius:100, resizeMode:'cover'}} source={require('../assets/home-2.png')} />
+          </View>
+          <View style={{marginTop:10}}>
+            <Text style={{fontSize:22, fontWeight:'bold'}}>{this.state.username}</Text>
+          </View>
+        </View>
+      </View>
+        {/* <Content style={{maxHeight:200}}>
           <Card >
-            <CardItem style={{backgroundColor:"#f37372"}}>
+            <CardItem style={{backgroundColor:"#76BA1B"}}>
               <Left style={{flex:1}}>
                 <Thumbnail source={require('../assets/home-2.png')} />
                 <Body>
                   <Text style={{color:"#fff"}}>{this.state.username}</Text>
-                  {/* <Text style={{color:"#fff"}} note>tushark39@gmail.com</Text> */}
-                  {/* <Text style={{color:"#fff"}} note>7004659787</Text> */}
                 </Body>
               </Left>
               <Right style={{flex:1}}>
@@ -57,7 +76,6 @@ _checklogin = async () =>{
               </Right>
             </CardItem>
             <CardItem cardBody style={{backgroundColor:"#f37372"}}>
-              {/* <Image source={require('../assets/home-2.png')} style={{height: 200, flex: 1}}/> */}
             <View style={{height: 200, flex: 1,marginTop:20}}>
             <CardItem style={{backgroundColor:"#fff"}}>
               <Left>
@@ -78,14 +96,15 @@ _checklogin = async () =>{
 
           </Card>
           
-        </Content>
+        </Content> */}
      
-        <Content style={{marginTop:-50}}>
+        <Content style={{marginTop:20}}>
           <List>
-            <ListItem>
+            {/* <ListItem>
               <Entypo name="back-in-time" size={24} color="black" />
               <TouchableOpacity><Text> &nbsp;My Inquiry</Text></TouchableOpacity>
-            </ListItem>
+            </ListItem> */}
+
             {/* <ListItem>
             <Left>
               <SimpleLineIcons name="wallet" size={24} color="black" />
@@ -95,11 +114,13 @@ _checklogin = async () =>{
                 <Text style={{color:"#689f39"}}>Rs 0.0</Text>
             </Right>
             </ListItem> */}
-            <ListItem>
+
+            {/* <ListItem>
               <Entypo name="credit-card" size={24} color="black" />
 
               <TouchableOpacity><Text> &nbsp;Payment Notifications</Text></TouchableOpacity>
-            </ListItem>
+            </ListItem> */}
+            
             {/* <ListItem>
               <SimpleLineIcons name="bubbles" size={24} color="black" />
               <TouchableOpacity><Text> &nbsp;My Ratings & Reviews</Text></TouchableOpacity>

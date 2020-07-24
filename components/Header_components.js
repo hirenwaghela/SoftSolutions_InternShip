@@ -229,15 +229,15 @@ export const Header5 = (props) => {
               width:width-40,
               justifyContent:"space-between",
           }}>
-            <TouchableOpacity onPress={() => props.navigation.goBack()}>
+            <TouchableOpacity onPress={() => props.navigation.goBack()} style={{height:30, width:30}}>
                 <Ionicons name="ios-arrow-back" size={30} color="white" />
             </TouchableOpacity>
             <View style={{flexDirection:"row", marginLeft:5, justifyContent:"space-between"}}>
-                <TouchableOpacity onPress={() => props.navigation.navigate('Search')} >
-                    <EvilIcons name="search" size={32} color="#fff" style={{marginTop:5}} />
+                <TouchableOpacity onPress={() => props.navigation.navigate('Search')} style={{height:30, width:30}}>
+                    <EvilIcons name="search" size={32} color="#fff" style={{marginTop:2}} />
                 </TouchableOpacity>
-                <Ionicons name="md-share" size={24} color="white" style={{marginTop:5, marginLeft:30}} />
-                <FontAwesome name="shopping-basket" size={20} color="white" style={{marginTop:7, marginLeft:30}}/>
+                {/* <Ionicons name="md-share" size={24} color="white" style={{marginTop:5, marginLeft:30}} />
+                <FontAwesome name="shopping-basket" size={20} color="white" style={{marginTop:7, marginLeft:30}}/> */}
             </View>
 
           </View>

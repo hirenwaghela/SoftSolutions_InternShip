@@ -6,7 +6,7 @@ import { Header5 } from "../components/Header_components";
 import { Form, Item, Label, Input, Button } from 'native-base';
 import { AsyncStorage } from 'react-native';
 // import { Table, Row, Rows } from 'react-native-table-component';
-import {  ScrollHorizontalCardNew } from "../components/Card"
+import {  ScrollHorizontalCardViewNew, ScrollVerticalCardView2 } from "../components/Card"
 // import { TouchableOpacity } from 'react-native-gesture-handler';
 import Swiper from 'react-native-swiper'
 import axios from 'axios'
@@ -135,7 +135,10 @@ export default class Product_Description extends React.Component {
 
     render() {
         // let check = this.state._productqualityParameters.map(q => q)
-        console.log(this.state._productName);
+        
+        // console.log(this.state._productName);
+
+        console.log(this.state.productImage);
 
         //   this.disabledButtonCheck();
         //   console.log('test',this.state._productqualityParameter[0])
@@ -187,20 +190,17 @@ export default class Product_Description extends React.Component {
                             </View>
                             {/* <Text style={{fontSize:10, color:'grey'}}>(inclusive of all taxes)</Text> */}
                         </View>
-                        <View style={{ }}>
 
-
-                            <View style={{ width: width-10, height: 400 }}>
+                        <View>
+                            <View style={{ width: width, height: 400 }}>
                                 <Swiper
                                     autoplay
-                                    style={{ height: null }}
+                                    style={{ height:400 }}
                                     paginationStyle={{ position: "absolute", top: undefined, bottom: 0 }}
 
                                 >
 
-                                {
-                                    
-                                    
+                                {    
                                     this.state.productImage.map(image=>{
 
                                         return(
@@ -215,26 +215,8 @@ export default class Product_Description extends React.Component {
                                         )
                                     })
                                 }
-                                   
-
-
-
                                 </Swiper>
                             </View>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                         </View>
                         {/* <View style={{ paddingHorizontal:10, marginTop:15}}> */}
                         {/* <Text style={{fontSize:20}}>Pack Sizes</Text> */}
@@ -525,9 +507,6 @@ export default class Product_Description extends React.Component {
                                                     <Text style={{ color: "#fff" }}>Send Enquiry</Text>
                                                 </Button>
                                             </Form>
-
-
-
                                         </View>
 
                                     </View>
@@ -543,7 +522,7 @@ export default class Product_Description extends React.Component {
                     <View style={{ padding: 10, marginTop: 5, backgroundColor: '#fff' }}>
                         <Text style={{ fontSize: 16, marginBottom: 10 }}>More Products</Text>
                         {/* <ScrollHorizontal_Product_SuggestionView /> */}
-                      <ScrollHorizontalCardNew navigation={this.props.navigation}/>
+                      <ScrollVerticalCardView2 navigation={this.props.navigation}/>
 
                     </View>
                     {/* <View style={{padding:10, marginTop:5, backgroundColor:'#fff'}}>

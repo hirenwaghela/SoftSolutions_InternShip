@@ -78,7 +78,7 @@ class LoginCheck extends React.Component{
   }
 }  
 
-
+ 
 
 const HomeStack = () => {
   return (
@@ -94,7 +94,7 @@ const HomeStack = () => {
       <Stack.Screen name="Profile" component={Profile} options={{ 
         headerTitle:"My profile",
         headerStyle:{
-          backgroundColor:"#689f39",
+          backgroundColor:"#76BA1B",
         },
         headerTitleAlign:"center",
         headerTintColor:"#fff"
@@ -127,13 +127,13 @@ const HomeTab = () => {
                       ),
                     }}
           />
-          <Tab.Screen name="Categories" component={Category} 
+          {/* <Tab.Screen name="Categories" component={Category} 
                     options={{
                       tabBarIcon: () => (
                         <FontAwesome name="th" size={24} color="black" />
                       ),
                     }}
-          />
+          /> */}
           <Tab.Screen name="Search" component={Search} 
                     options={{
                       tabBarIcon: () => (

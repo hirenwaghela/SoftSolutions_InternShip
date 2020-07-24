@@ -41,7 +41,7 @@ updateSearch = searchtext => {
         }
         this.state.products = this.state.search_product
                                 .filter(function(item) {
-                                    return item.name.includes(searchtext);
+                                    return item.name.toUpperCase().includes(searchtext.toUpperCase());
                                 })
                                 .map(function({_id,name,price,images,status}) {
                                     return {_id,name,price,images,status} ;
@@ -120,7 +120,7 @@ updateSearch = searchtext => {
               width:width-40,
               justifyContent:"space-between",
           }}>
-             <TouchableOpacity onPress={() => this.navigation.goBack()}>
+             <TouchableOpacity onPress={() => this.props.navigation.goBack()} style={{height:30, width:30}}>
                 <Ionicons name="ios-arrow-back" size={30} color="white" />
             </TouchableOpacity>
              <View>
