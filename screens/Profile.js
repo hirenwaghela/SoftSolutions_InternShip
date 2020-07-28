@@ -12,6 +12,7 @@ export default class CardImageExample extends Component {
      
     this.state = {
         username: "",
+        profile_pic: "",
         ucity:"",
         uState:""
     };
@@ -19,13 +20,17 @@ export default class CardImageExample extends Component {
 componentWillMount(){
     this._checklogin()
 }
+
+
+
 _checklogin = async () =>{
-    let test= await AsyncStorage.getItem('username')
-    console.log('test\n:'+JSON.stringify(test));
-    this.setState({
-        username:test
-    }) 
+    let profile_pic= await AsyncStorage.getItem("profile_pic")
+    console.log('profile_pic:\n'+JSON.stringify(profile_pic));
+    this.setState({ profile_pic }) 
 }
+
+
+
   render() {
     return (
     <Container>
@@ -53,7 +58,8 @@ _checklogin = async () =>{
         
         <View style={{alignItems:'center', justifyContent:'center'}}>
           <View style={{height:200, width:200, borderRadius:100, elevation:10}}>
-            <Image style={{height:200, width:200, borderRadius:100, resizeMode:'cover'}} source={require('../assets/home-2.png')} />
+            <Image style={{height:200, width:200, borderRadius:100, resizeMode:'cover'}} 
+                   source={{uri:`${this.state.profile_pic}`}} />
           </View>
           <View style={{marginTop:10}}>
             <Text style={{fontSize:22, fontWeight:'bold'}}>{this.state.username}</Text>

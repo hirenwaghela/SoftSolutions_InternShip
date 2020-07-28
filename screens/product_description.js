@@ -92,6 +92,22 @@ export default class Product_Description extends React.Component {
     componentDidMount() {
 
     }
+
+
+    checkInquiry = async() => {
+        let username= await AsyncStorage.getItem('username')
+        // console.log('\n\nInquiry\n')
+        // console.log(username)
+        if(username !== null){
+            this.setState({ _modalVisible: true })
+        }
+        else{
+            this.props.navigation.navigate('LoginSignup')
+        }
+        
+    }
+
+
     sendEnquire = async (id) => {
         // console.log('State check :\n\n\n\n\n '+JSON.stringify(this.state));
         let _userKey = await AsyncStorage.getItem('user')
@@ -403,7 +419,7 @@ export default class Product_Description extends React.Component {
                         <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: "center", backgroundColor: 'black'}}>
                             <TouchableOpacity
                                 onPress={() => {
-                                    this.setState({ _modalVisible: true })
+                                    this.checkInquiry()
                                     //    this.sendEnquire(
                                     //        this.state._productqualityParameter.parameter,
                                     //        this.state._productqualityParameter.values,

@@ -92,7 +92,21 @@ export default class Product_Description extends React.Component {
     componentDidMount() {
 
     }
-    sendEnquire = async (id) => {
+
+    checkInquiry = async() => {
+        let username= await AsyncStorage.getItem('username')
+        // console.log('\n\nInquiry\n')
+        // console.log(username)
+        if(username !== null){
+            this.setState({ _modalVisible: true })
+        }
+        else{
+            this.props.navigation.navigate('LoginSignup')
+        }
+        
+    }
+
+    sendInquiry = async (id) => {
         // console.log('State check :\n\n\n\n\n '+JSON.stringify(this.state));
         let _userKey = await AsyncStorage.getItem('user')
         axios.post(`${baseUrl}api/v1/inquiry/create/`, {
@@ -187,53 +201,30 @@ export default class Product_Description extends React.Component {
                             </View>
                             {/* <Text style={{fontSize:10, color:'grey'}}>(inclusive of all taxes)</Text> */}
                         </View>
-                        <View style={{ }}>
-
-
+                        <View>
                             <View style={{ width: width-10, height: 400 }}>
                                 <Swiper
                                     autoplay
                                     style={{ height: null }}
                                     paginationStyle={{ position: "absolute", top: undefined, bottom: 0 }}
-
                                 >
-
                                 {
                                     
-                                    
                                     this.state.productImage.map(image=>{
-
                                         return(
                                             <Image
-                                        style={styles.image}
-                                        // source={{uri:`${baseUrl}${this.state._productFrontImage}`}}
-                                        // source={require("./../assets/swiper-1.png")}
-                                        source={
-                                            { uri: `${baseUrl}${image.substring(7)}` }
-                                        }
-                                    />
-                                        )
-                                    })
+                                                style={styles.image}
+                                                // source={{uri:`${baseUrl}${this.state._productFrontImage}`}}
+                                                // source={require("./../assets/swiper-1.png")}
+                                                source={
+                                                    { uri: `${baseUrl}${image.substring(7)}` }
+                                                }
+                                            />
+                                            )
+                                        })
                                 }
-                                   
-
-
-
                                 </Swiper>
                             </View>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                         </View>
                         {/* <View style={{ paddingHorizontal:10, marginTop:15}}> */}
@@ -421,8 +412,8 @@ export default class Product_Description extends React.Component {
                         <View style={{ flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: "center", backgroundColor: 'black'}}>
                             <TouchableOpacity
                                 onPress={() => {
-                                    this.setState({ _modalVisible: true })
-                                    //    this.sendEnquire(
+                                            this.checkInquiry()
+                                    //    this.sendInquiry(
                                     //        this.state._productqualityParameter.parameter,
                                     //        this.state._productqualityParameter.values,
                                     //        this.state._productqualityParameter._id
@@ -506,7 +497,7 @@ export default class Product_Description extends React.Component {
                                                     }
 
                                                     onPress={() => {
-                                                        this.sendEnquire(
+                                                        this.sendInquiry(
                                                             // this.state._productqualityParameter.parameter,
                                                             // this.state._productqualityParameter.values,
                                                             this.state._productId

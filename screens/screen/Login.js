@@ -9,6 +9,7 @@ import * as Permissions from 'expo-permissions';
 import axios from "axios";
 import { AsyncStorage } from 'react-native';
 let baseUrl = `https://knekisan.com/`;
+
 export default class Login extends React.Component{
     constructor(props) {
         super(props);
@@ -21,59 +22,68 @@ export default class Login extends React.Component{
           loginPressed:false
         };
       }
-      loginSubmit= ()=>{
+
+    loginSubmit = () => {
+      this.setState({
+        loginText:  <Spinner />,
+        disableBttn:true
+      })
+      axios({
+        method: 'POST',
+        url: `${baseUrl}api/v1/authentication/login`,
+        data: {
+          'userName' : this.state.username,
+          'password' : this.state.password
+        }
+      })
+      .then  ( respone=>{
+        let responce = JSON.stringify(respone.data.token)        
+        this.setState({responce})
+        // console.log('Sucess :  ::::::::::::::::::::::  \n\n\n\n\n'+ respone.data.id);
+        // this.storeData();
+        
+        //console.log("\n\n\nRes: \n", respone.data.user.documentsUploaded)
+        if(respone.data.user.documentsUploaded.length > 0){
+          AsyncStorage.setItem( "profile_pic",respone.data.user.documentsUploaded[0])
+        }
+        
+
+        AsyncStorage.setItem( "user",respone.data.id)
+        .then(async()=>{
+          AsyncStorage.setItem('username',this.state.username)
+          .then(async()=>{
+            Alert.alert("आप सफलतापूर्वक लॉग इन हो गए हैं!")
+            
+            this.setState({
+              username:null,
+              password:null,
+              responce:null
+            })
+            this.props.nav.navigate("Home")
+            this.setState({
+              loginText:<Text style={{textAlign:"center",color:"#fff"}}>लॉग इन</Text>,
+              disableBttn:false
+            })
+            // this.props.navigation.goBack();
+          // let test= await AsyncStorage.getItem('username')
+          // console.log('test :'+JSON.stringify(test));  
+          })
+          .catch((e)=>{
+            console.log('error setting user name : '+e);
+          })
+        }).
+        catch(e=>{
+          console.log('error setting user id\n\n\n : '+e);
+        })
+      }).catch(e=>{
+        console.log('error from backend: '+e);
+        Alert.alert("प्रमाणिकता मान्य नहीं!")
         this.setState({
-          loginText:  <Spinner />,
-          disableBttn:true
+          loginText:<Text style={{textAlign:"center",color:"#fff"}}>लॉग इन</Text>,
+          disableBttn:false
         })
-        axios({
-          method: 'POST',
-          url: `${baseUrl}api/v1/authentication/login`,
-          data: {
-            'userName' : this.state.username,
-            'password' : this.state.password
-          }
-        })
-        .then  ( respone=>{
-          let responce = JSON.stringify(respone.data.token)
-          this.setState({responce})
-          // console.log('Sucess :  ::::::::::::::::::::::  \n\n\n\n\n'+ respone.data.id);
-          // this.storeData();
-         AsyncStorage.setItem( "user",respone.data.id).
-          then(async()=>{
-            AsyncStorage.setItem('username',this.state.username)
-            .then(async()=>{
-              Alert.alert("आप सफलतापूर्वक लॉग इन हो गए हैं!")
-              this.setState({
-                username:null,
-                password:null,
-                responce:null
-              })
-              this.props.nav.navigate("Home")
-              this.setState({
-                loginText:<Text style={{textAlign:"center",color:"#fff"}}>लॉग इन</Text>,
-                disableBttn:false
-              })
-              // this.props.navigation.goBack();
-            // let test= await AsyncStorage.getItem('username')
-            // console.log('test :'+JSON.stringify(test));  
-            })
-            .catch((e)=>{
-              console.log('error setting user name : '+e);
-            })
-          }).
-          catch(e=>{
-            console.log('error setting user id\n\n\n : '+e);
-          })
-        }).catch(e=>{
-          console.log('error from backend: '+e);
-          Alert.alert("प्रमाणिकता मान्य नहीं!")
-          this.setState({
-            loginText:<Text style={{textAlign:"center",color:"#fff"}}>लॉग इन</Text>,
-            disableBttn:false
-          })
-        })
-      }
+      })
+    }
 
     render(){
         return(
@@ -89,7 +99,8 @@ export default class Login extends React.Component{
                 }
                />
             </Item>
-            <Item floatingLabel>
+            <Item style={{marginTop:25}}
+                  floatingLabel>
               <Label>कुंजिका</Label>
                 <Input 
                 secureTextEntry={true}

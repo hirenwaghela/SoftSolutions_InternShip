@@ -13,6 +13,7 @@ import AwesomeAlert from 'react-native-awesome-alerts';
 // import {  } from "react-native-fetch-blob";
 let baseUrl = `https://knekisan.com/`;
 // let baseUrl = `http://192.168.29.157:4000/`;
+
 export default class signUp extends React.Component{
   
     constructor(props) {
@@ -436,12 +437,12 @@ export default class signUp extends React.Component{
           <View>
            <Text style={{fontSize:18}}>उपयोगकर्ता का प्रकार : </Text>
           </View>
-          <View style={{marginTop:-25}}>
+          <View style={{marginTop:-25, marginRight:13}}>
           <Picker
               mode="dropdown"
               iosHeader="उपयोगकर्ता प्रकार का चयन करें"
               iosIcon={<Icon name="arrow-down" />}
-              style={{ width:200,marginLeft:5,marginBottom:-30 }}
+              style={{ width:150,marginLeft:5,marginBottom:-30 }}
               selectedValue={this.state.selected}
               onValueChange={this.onValueChange.bind(this)}
             >
@@ -467,10 +468,10 @@ export default class signUp extends React.Component{
             />
             </Item> */}
            <ScrollView
-          style={{ marginBottom:100 }}
+          style={{ marginBottom:100, paddingHorizontal:10 }}
            >
             <Item 
-            style={{marginTop:10}}
+            style={{marginTop:15}}
              floatingLabel>
             <Label>उपयोगकर्ता नाम</Label>
             <Input 
@@ -484,7 +485,7 @@ export default class signUp extends React.Component{
             />
             </Item>
             <Item 
-            style={{marginTop:15}}
+            style={{marginTop:18}}
              floatingLabel>
             <Label>कुंजिका</Label>
             <Input 
@@ -499,7 +500,7 @@ export default class signUp extends React.Component{
             />
             </Item>
             <Item 
-            style={{marginTop:15}}
+            style={{marginTop:18}}
              floatingLabel>
             <Label>मोबाइल नंबर</Label>
             <Input 
@@ -513,7 +514,7 @@ export default class signUp extends React.Component{
             />
             </Item>
             <Item 
-            style={{marginTop:15}}
+            style={{marginTop:18}}
              floatingLabel>
             <Label>पता 1</Label>
             <Input 
@@ -527,7 +528,7 @@ export default class signUp extends React.Component{
             />
             </Item>
             <Item 
-            style={{marginTop:15}}
+            style={{marginTop:18}}
              floatingLabel>
             <Label>पता 2</Label>
             <Input 
@@ -541,7 +542,7 @@ export default class signUp extends React.Component{
             />
             </Item>
             <Item 
-            style={{marginTop:15}}
+            style={{marginTop:18}}
              floatingLabel>
             <Label>शहर</Label>
             <Input 
@@ -554,8 +555,8 @@ export default class signUp extends React.Component{
                 }
             />
             </Item>
-            <Item 
-            style={{marginTop:15}}
+            <Item  bbbbbbbbbbbbb  
+            style={{marginTop:18}}
              floatingLabel>
             <Label>राज्य</Label>
             <Input 
@@ -598,13 +599,13 @@ export default class signUp extends React.Component{
             />
             </Item>
             </View>
-            <View style={{marginLeft:0,flex:1}}>
+            <View style={{marginLeft:10, marginTop:10, flex:1}}>
             <Picker
               mode="dropdown"
               iosIcon={<Icon name="arrow-down" />}
               style={{ width:100 }}
               selectedValue={this.state.area}
-              onValueChange={this.onValueChange.bind(this)}
+              onValueChange={this.onValueChangeArea.bind(this)}
             >
               <Picker.Item label="वर्ग" value="sq" />
               <Picker.Item label="एकड़" value="acre" />
@@ -616,7 +617,7 @@ export default class signUp extends React.Component{
          
          
          
-          <View style={{alignItems:"center"}}>
+          <View style={{alignItems:"center", marginTop: 20}}>
             <View style={{ margin: 10 }}>
               <Button style={{width:200,justifyContent:"center"}} onPress={() => this.addTextInput(this.state.textInput.length)}>
               <Text style={{color:"#fff"}}>
@@ -654,9 +655,10 @@ export default class signUp extends React.Component{
         nextBtnDisabled={this.checkBank()}
         // nextBtnDisabled={this.state.bankBttn}
         label="बैंक">
-        <View style={{ backgroundColor:"#fff" }}>
+        <View style={{ backgroundColor:"#fff", paddingHorizontal:10 }}>
             {/* <Form> */}
-            <Item floatingLabel>
+            <Item style={{marginTop:18}} 
+                  floatingLabel>
               <Label>बैंक का नाम</Label>
               <Input 
                 value={this.state.bank_name}
@@ -665,7 +667,8 @@ export default class signUp extends React.Component{
                   }
               />
             </Item>
-            <Item floatingLabel>
+            <Item style={{marginTop:18}}
+                  floatingLabel>
               <Label>खाता संख्या</Label>
               <Input 
                 value={this.state.accNumber}
@@ -674,7 +677,8 @@ export default class signUp extends React.Component{
                   }
               />
             </Item>
-            <Item floatingLabel>
+            <Item style={{marginTop:18}}
+                  floatingLabel>
               <Label>IFSC कोड</Label>
               <Input 
                 value={this.state.ifscCode}
@@ -683,7 +687,8 @@ export default class signUp extends React.Component{
                   }
               />
             </Item>
-            <Item floatingLabel>
+            <Item style={{marginTop:18}}
+                  floatingLabel>
               <Label>खाताधारक का नाम</Label>
               <Input 
                 value={this.state.accHolderName}
@@ -698,7 +703,8 @@ export default class signUp extends React.Component{
         <ProgressStep label="निजी ">
         <View style={{ backgroundColor:"#fff" }}>
             <Form>
-            <Item floatingLabel>
+            <Item style={{marginTop:18}}
+                  floatingLabel>
               <Label>आधार संख्या</Label>
               <Input 
                   onChangeText={
@@ -706,7 +712,8 @@ export default class signUp extends React.Component{
                   }
               />
             </Item>
-            <Item floatingLabel>
+            <Item style={{marginTop:18}}
+                  floatingLabel>
               <Label>पैन</Label>
               <Input 
                   onChangeText={
@@ -736,7 +743,7 @@ export default class signUp extends React.Component{
         )}
          >
         <View style={{ backgroundColor:"#fff" }}>
-            <Form style={{alignItems:"center",marginTop:20}}>
+            <Form style={{alignItems:"center",marginTop:40}}>
             <TouchableOpacity onPress={this.userChoice} style={{flexDirection:"row"}}>
             <MaterialCommunityIcons name="face-profile" size={26} color="black" />
                 <Text>
@@ -746,7 +753,7 @@ export default class signUp extends React.Component{
                 &nbsp;&nbsp;<Entypo name={this.state.check1} size={18} color="green"/>
                 </Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={this._pickImageAadhar} style={{flexDirection:"row",marginTop:20}}>
+            <TouchableOpacity onPress={this._pickImageAadhar} style={{flexDirection:"row",marginTop:25}}>
             <AntDesign name="idcard" size={26} color="black" />
                 <Text>
                 &nbsp;&nbsp;:अपना आधार अपलोड करें
@@ -755,7 +762,7 @@ export default class signUp extends React.Component{
                 &nbsp;&nbsp;<Entypo name={this.state.check2} size={18} color="green"/>
                 </Text>
             </TouchableOpacity>
-            <TouchableOpacity onPress={this._pickImagePan} style={{flexDirection:"row",marginTop:20}}>
+            <TouchableOpacity onPress={this._pickImagePan} style={{flexDirection:"row",marginTop:25}}>
             <AntDesign name="idcard" size={26} color="black" />
                 <Text>
                 &nbsp;&nbsp;:अपना पैन अपलोड करें

@@ -63,7 +63,7 @@ componentWillMount(){
         <TouchableOpacity onPress={() => this.props.navigation.navigate('Home')} style={{marginTop:Constant.statusBarHeight-35,marginLeft:10}}>
           <AntDesign name="close" size={32} color="white" />
         </TouchableOpacity>
-          <View style={{flexDirection:"row",height:50, width:width-20, elevation:5, marginBottom:5}}>
+          <View style={{flexDirection:"row",height:50, width:width-10, elevation:5, marginBottom:5}}>
               <TouchableOpacity onPress={ () => {
                   this._onPress("login")
                 //   this.loginData();
@@ -78,7 +78,7 @@ componentWillMount(){
                     <Text style={{fontSize:textSize2, color: textcolor2}}>साइन अप</Text>
               </TouchableOpacity>
           </View>
-          <View style={{height:height-100, width:width-20, elevation:5, backgroundColor:"#fff"}}>
+          <View style={{height:height-100, width:width-10, paddingHorizontal:5, elevation:5, backgroundColor:"#fff"}}>
               {/* {entryView} */}
               {/* <View style={{ marginTop:40 ,paddingHorizontal:60}}>
               {Msg}
